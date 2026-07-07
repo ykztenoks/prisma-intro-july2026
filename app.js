@@ -16,8 +16,6 @@ app.get("/users", async (req, res) => {
   try {
     const response = await prisma.user.findMany()
 
-    console.log(response)
-
     return res.status(200).json(response)
   } catch (error) {
     console.log(error)
@@ -43,7 +41,6 @@ app.post("/users", async (req, res) => {
 
     const response = await prisma.user.create({ data: { username, email } })
 
-    console.log(response)
     return res.status(201).json({ msg: "user created", user: response })
   } catch (error) {
     console.log(error)
